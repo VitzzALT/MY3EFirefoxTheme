@@ -84,6 +84,7 @@ button:active{border-radius:16px;transform:scale(.9)}
 #fav{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 14px;margin-top:34px}
 #fav a{width:76px;text-align:center;text-decoration:none;color:var(--on-surface-variant);font-size:12px;font-weight:500}
 #fav b{display:grid;place-items:center;width:64px;height:64px;margin:0 auto 6px;font:700 22px var(--font);transition:border-radius .45s var(--spring),transform .45s var(--spring)}
+#fav b.ni{font-family:NF,sans-serif;font-weight:400;font-size:28px}
 #fav a:nth-child(5n+1) b{border-radius:50%;background:var(--primary-container);color:var(--on-primary-container)}
 #fav a:nth-child(5n+2) b{border-radius:24px;background:var(--tertiary-container);color:var(--on-tertiary-container)}
 #fav a:nth-child(5n+3) b{border-radius:32px 32px 14px 14px;background:var(--secondary-container);color:var(--on-secondary-container)}
@@ -111,12 +112,13 @@ var ENGINES={ /* o primeiro é o padrão */
   yt:["YouTube","https://www.youtube.com/results?search_query="],
   wk:["Wikipédia","https://pt.wikipedia.org/w/index.php?search="]
 };
-var FAVS=[ /* [nome, endereço] */
-  ["YouTube","https://www.youtube.com"],
-  ["GitHub","https://github.com"],
+var FONT="SymbolsNerdFont-Regular.ttf"; /* arquivo da fonte, na mesma pasta deste index.html */
+var FAVS=[ /* [nome, endereço, ícone (opcional, código da fonte Nerd)] */
+  ["YouTube","https://www.youtube.com","\uf16a"],
+  ["GitHub","https://github.com","\uf09b"],
   ["Claude","https://claude.ai"],
-  ["Reddit","https://www.reddit.com"],
-  ["Wikipédia","https://pt.wikipedia.org"]
+  ["Reddit","https://www.reddit.com","\uf1a1"],
+  ["Wikipédia","https://pt.wikipedia.org","\uf266"]
 ];
 /* ======================= */
 var $=function(i){return document.getElementById(i)};
@@ -134,8 +136,17 @@ $("f").onsubmit=function(e){
   else if(/^[^\s]+\.[a-z]{2,}(\/\S*)?$/i.test(v))location.href="https://"+v;
   else location.href=ENGINES[eng.value][1]+encodeURIComponent(v);
 };
-$("fav").innerHTML=FAVS.map(function(f){
-  return '<a href="'+f[1]+'"><b>'+f[0].charAt(0).toUpperCase()+'</b>'+f[0]+'</a>';
+$("fav").innerHTML=FAVS.map(function(f,i){
+  return '<a href="'+f[1]+'"><b id="ic'+i+'">'+f[0].charAt(0).toUpperCase()+'</b>'+f[0]+'</a>';
 }).join("");
+/* ícones Nerd Font: só trocam a letra se a fonte carregar de verdade */
+try{
+  new FontFace("NF","url("+FONT+")").load().then(function(face){
+    document.fonts.add(face);
+    FAVS.forEach(function(f,i){
+      if(f[2]){var b=$("ic"+i);b.textContent=f[2];b.classList.add("ni")}
+    });
+  }).catch(function(){});
+}catch(e){}
 </script>
 </body></html>
