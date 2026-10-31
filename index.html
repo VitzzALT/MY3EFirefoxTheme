@@ -21,6 +21,25 @@
   --tertiary-container:#633B48;--on-tertiary-container:#FFD8E4;
   --surface-high:#2B2930;--surface-highest:#36343B;
 }}
+/* paleta dinâmica a partir da cor de destaque do Windows (se o navegador não entender, usa a paleta acima) */
+@supports (color:oklch(from AccentColor l c h)){
+  :root{
+    --surface:oklch(from AccentColor .98 .008 h);--on-surface:oklch(from AccentColor .2 .02 h);--on-surface-variant:oklch(from AccentColor .42 .025 h);
+    --primary:oklch(from AccentColor .46 .16 h);--on-primary:#fff;
+    --primary-container:oklch(from AccentColor .91 .06 h);--on-primary-container:oklch(from AccentColor .25 .09 h);
+    --secondary-container:oklch(from AccentColor .92 .03 h);--on-secondary-container:oklch(from AccentColor .25 .04 h);
+    --tertiary-container:oklch(from AccentColor .91 .06 calc(h + 60));--on-tertiary-container:oklch(from AccentColor .25 .08 calc(h + 60));
+    --surface-high:oklch(from AccentColor .93 .015 h);--surface-highest:oklch(from AccentColor .9 .02 h);
+  }
+  @media (prefers-color-scheme:dark){:root{
+    --surface:oklch(from AccentColor .17 .012 h);--on-surface:oklch(from AccentColor .92 .01 h);--on-surface-variant:oklch(from AccentColor .8 .02 h);
+    --primary:oklch(from AccentColor .8 .12 h);--on-primary:oklch(from AccentColor .25 .09 h);
+    --primary-container:oklch(from AccentColor .36 .1 h);--on-primary-container:oklch(from AccentColor .91 .05 h);
+    --secondary-container:oklch(from AccentColor .38 .04 h);--on-secondary-container:oklch(from AccentColor .91 .03 h);
+    --tertiary-container:oklch(from AccentColor .38 .08 calc(h + 60));--on-tertiary-container:oklch(from AccentColor .91 .05 calc(h + 60));
+    --surface-high:oklch(from AccentColor .24 .018 h);--surface-highest:oklch(from AccentColor .29 .02 h);
+  }}
+}
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{min-height:100%}
 body{background:var(--surface);color:var(--on-surface);font-family:var(--font);display:grid;place-items:center;min-height:100vh;overflow-x:hidden}
