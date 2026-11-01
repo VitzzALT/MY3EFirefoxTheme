@@ -13,7 +13,7 @@ Tema **Material 3 Expressive** para o Firefox: página inicial, nova aba e inter
 | `index.html` | Página inicial e de nova aba (busca, atalhos, saudação por horário) |
 | `userChrome.css` | Visual da interface do Firefox (abas, barra de endereço, botões, favoritos, menus) |
 | `install.ps1` / `install.sh` | Instalam o tema automaticamente (Windows / Linux) |
-| `fonts/SymbolsNerdFont-Regular.ttf` | Fonte de ícones da [Nerd Fonts](https://www.nerdfonts.com/) usada nos atalhos |
+| `fonts/SymbolsNerdFontMono-Regular.ttf` | Fonte de ícones da [Nerd Fonts](https://www.nerdfonts.com/) usada nos atalhos |
 | `via/` | Versão para o [Via Browser](via/README.md) (Android): `homepage.css` e `logo-snippet.html` |
 
 ## Instalação rápida (script)
