@@ -63,6 +63,8 @@ O aviso da extensão diz que arquivos locais (`file://`) não funcionam como URL
 
 No Windows, confira se o arquivo não ficou como `userChrome.css.txt`.
 
+4. Troque o endereço nos scripts: no `install.ps1`, edite as variáveis `$Raw` e `$Page`, e no `install.sh`, `RAW` e `PAGE`, colocando o seu usuário e o nome do repositório. Sem isso, eles baixam o tema do repositório original.
+
 ## Fazer a sua própria cópia
 
 1. Faça um fork deste repositório (ou crie um novo e envie os arquivos).
