@@ -2,7 +2,7 @@
 
 Tema **Material 3 Expressive** para o Firefox: página inicial, nova aba e interface do navegador, com formas que se transformam, movimento com mola e linhas onduladas e em zigzag. A paleta é gerada a partir da **cor de destaque do Windows**, nos modos claro e escuro.
 
-<img width="1919" height="912" alt="image" src="https://github.com/user-attachments/assets/27fb5ac0-b230-489b-adc0-56ccd2f472b2" />
+<img width="1919" height="912" alt="image" src="https://github.com/user-attachments/assets/c3759077-07e1-47a3-9142-5f8a413f56a1" />
 
 **Página inicial:** https://vitzzalt.github.io/MY3EFirefoxTheme/
 
@@ -12,8 +12,31 @@ Tema **Material 3 Expressive** para o Firefox: página inicial, nova aba e inter
 | --- | --- |
 | `index.html` | Página inicial e de nova aba (busca, atalhos, saudação por horário) |
 | `userChrome.css` | Visual da interface do Firefox (abas, barra de endereço, botões, favoritos, menus) |
+| `install.ps1` / `install.sh` | Instalam o tema automaticamente (Windows / Linux) |
 | `fonts/SymbolsNerdFont-Regular.ttf` | Fonte de ícones da [Nerd Fonts](https://www.nerdfonts.com/) usada nos atalhos |
 | `via/` | Versão para o Via Browser (Android): `homepage.css` e `logo-snippet.html` |
+
+## Instalação rápida (script)
+
+Os scripts instalam o `userChrome.css` no perfil padrão do Firefox, ativam a opção necessária e definem a página inicial. Feche o Firefox por completo antes de rodar. Se já existir um `userChrome.css`, o script guarda um backup.
+
+**Windows (PowerShell):**
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\install.ps1
+```
+
+**Linux:**
+
+```bash
+bash install.sh
+```
+
+Opções: `-Uninstall` / `--uninstall` remove o tema, e `-NoHomepage` / `--no-homepage` não mexe na página inicial.
+
+Leia o script antes de rodar, como com qualquer script baixado da internet. A nova aba continua precisando da extensão (passo 2 abaixo).
+
+Ou faça tudo manualmente:
 
 ## Instalação no Firefox
 
