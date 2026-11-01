@@ -1,0 +1,169 @@
+/* ===== Material 3 Expressive — Via Browser =====
+   Paleta tonal M3 (claro/escuro automático), formas que se transformam,
+   movimento com mola (spring) e linhas zigzag/onduladas.
+   Para trocar a cor do tema, mude só as variáveis --primary* / --tertiary* abaixo. */
+
+:root{
+  color-scheme:light dark;
+  --surface:#FEF7FF; --on-surface:#1D1B20; --on-surface-variant:#49454F;
+  --primary:#6750A4; --on-primary:#FFFFFF;
+  --primary-container:#EADDFF; --on-primary-container:#21005D;
+  --secondary-container:#E8DEF8; --on-secondary-container:#1D192B;
+  --tertiary:#7D5260; --tertiary-container:#FFD8E4; --on-tertiary-container:#31111D;
+  --surface-high:#ECE6F0; --surface-highest:#E6E0E9; --outline:#79747E;
+  --spring:cubic-bezier(.34,1.56,.64,1);
+  --smooth:cubic-bezier(.2,0,0,1);
+  --font:"Google Sans Flex","Google Sans","Roboto Flex",Roboto,ui-sans-serif,system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root{
+  --surface:#141218; --on-surface:#E6E0E9; --on-surface-variant:#CAC4D0;
+  --primary:#D0BCFF; --on-primary:#381E72;
+  --primary-container:#4F378B; --on-primary-container:#EADDFF;
+  --secondary-container:#4A4458; --on-secondary-container:#E8DEF8;
+  --tertiary:#EFB8C8; --tertiary-container:#633B48; --on-tertiary-container:#FFD8E4;
+  --surface-high:#2B2930; --surface-highest:#36343B; --outline:#938F99;
+}}
+
+/* ---------- Base ---------- */
+*{padding:0;margin:0;box-sizing:border-box;user-drag:none;-webkit-user-drag:none}
+html{height:100%;background:var(--surface);-webkit-tap-highlight-color:transparent;font-family:var(--font)}
+body{min-height:100%;max-width:100%;width:600px;margin:auto;text-align:center;color:var(--on-surface);background:transparent}
+#gesture-indicator{height:100%;width:100%;max-width:600px;position:absolute;top:0;bottom:0;z-index:0;overflow:hidden;word-break:break-all}
+
+/* ---------- Fundo: formas M3E + zigzag ---------- */
+#bg{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:-1}
+#bg i{position:absolute;display:block}
+.s1{width:250px;height:250px;top:-70px;right:-80px;background:var(--tertiary-container);
+  animation:morph 14s var(--smooth) infinite alternate,spin 40s linear infinite}
+.s2{width:150px;height:150px;top:46%;left:-70px;background:var(--primary-container);opacity:.8;
+  animation:morph 11s var(--smooth) infinite alternate-reverse,spin 32s linear infinite reverse}
+.s3{width:96px;height:96px;bottom:90px;right:26px;background:var(--secondary-container);
+  animation:morph 9s var(--smooth) infinite alternate,spin 24s linear infinite}
+@keyframes morph{
+  0%{border-radius:50%}
+  25%{border-radius:38% 62% 56% 44% / 50% 38% 62% 50%}
+  50%{border-radius:28%}
+  75%{border-radius:62% 38% 30% 70% / 42% 62% 38% 58%}
+  100%{border-radius:50% 18% 50% 18%}}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Zigzag na base da tela (máscara repetida, desliza devagar) */
+.zz{left:0;right:0;bottom:22px;height:20px;background:var(--primary);opacity:.55;
+  -webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='20' viewBox='0 0 40 20'><path d='M0 15 L10 5 L20 15 L30 5 L40 15' fill='none' stroke='black' stroke-width='4' stroke-linejoin='round' stroke-linecap='round'/></svg>") repeat-x 0 0/40px 20px;
+  mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='20' viewBox='0 0 40 20'><path d='M0 15 L10 5 L20 15 L30 5 L40 15' fill='none' stroke='black' stroke-width='4' stroke-linejoin='round' stroke-linecap='round'/></svg>") repeat-x 0 0/40px 20px;
+  animation:slide 3s linear infinite}
+@keyframes slide{to{-webkit-mask-position:40px 0;mask-position:40px 0}}
+
+/* ---------- Conteúdo ---------- */
+#content{position:fixed;top:max(110px,19vh);left:0;right:0;margin:0 auto;width:100%;max-width:600px;transition:.14s}
+.search_part{display:block;width:100%;padding:0 22px;text-align:left}
+.search_part>*{animation:rise .8s var(--spring) both}
+.logo{animation-delay:.02s}.headline{animation-delay:.08s}.wave{animation-delay:.14s}.search_bar_wrapper{animation-delay:.2s}
+#bookmark_part{animation:rise .8s var(--spring) .3s both}
+@keyframes rise{from{opacity:0;transform:translateY(26px) scale(.96)}to{opacity:1;transform:none}}
+
+/* Chip de favoritos + saudação */
+.logo{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 18px 0 14px;border-radius:20px;
+  background:var(--secondary-container);color:var(--on-secondary-container);text-decoration:none;
+  font-size:14px;font-weight:600;letter-spacing:.1px;
+  transition:border-radius .35s var(--spring),transform .35s var(--spring)}
+.logo b{font-weight:600}
+.logo:active{border-radius:10px;transform:scale(.94)}
+
+/* Título expressivo */
+.headline{margin:18px 0 6px;font-size:clamp(42px,13.5vw,58px);line-height:1.04;font-weight:800;
+  letter-spacing:-.03em;color:var(--on-surface)}
+
+/* Linha ondulada animada (estilo wavy indicator do M3E) */
+.wave{display:block;width:120px;height:14px;margin:0 0 26px;background:var(--primary);
+  -webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='14' viewBox='0 0 32 14'><path d='M0 7 Q8 -1 16 7 T32 7' fill='none' stroke='black' stroke-width='4' stroke-linecap='round'/></svg>") repeat-x 0 0/32px 14px;
+  mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='14' viewBox='0 0 32 14'><path d='M0 7 Q8 -1 16 7 T32 7' fill='none' stroke='black' stroke-width='4' stroke-linecap='round'/></svg>") repeat-x 0 0/32px 14px;
+  animation:rise .8s var(--spring) .14s both,wave 1.4s linear infinite}
+@keyframes wave{to{-webkit-mask-position:32px 0;mask-position:32px 0}}
+
+/* ---------- Barra de busca ---------- */
+.search_bar_wrapper{position:relative;display:block;width:100%;margin:0}
+.search_bar{position:relative;display:flex;align-items:center;width:100%;height:64px;margin:0;padding:0 8px 0 8px;
+  border:none;border-radius:32px;background:var(--surface-high);color:var(--on-surface-variant);
+  box-shadow:0 1px 3px rgba(0,0,0,.18),0 0 0 0 var(--primary);
+  transition:box-shadow .3s var(--smooth),border-radius .4s var(--spring),background .3s}
+.search_bar:focus-within{background:var(--surface-highest);box-shadow:0 2px 8px rgba(0,0,0,.2),0 0 0 2.5px var(--primary)}
+.search_bar span{display:block;order:1;flex:1;min-width:0;overflow:hidden;padding:0 4px}
+#search_input{display:block;height:64px;width:100%;padding:0 8px;outline:none;border:none;border-radius:0;
+  font:500 16px/64px var(--font);background:transparent;color:var(--on-surface);caret-color:var(--primary)}
+#search_input::placeholder{color:var(--on-surface-variant);opacity:.75;font-weight:400}
+
+/* Seletor de mecanismo (cápsula tonal) */
+.search_bar select{order:0;appearance:none;-webkit-appearance:none;height:44px;max-width:112px;padding:0 12px;margin:0;
+  border:none;outline:none;border-radius:22px;background:var(--tertiary-container);color:var(--on-tertiary-container);
+  font:600 13px var(--font);text-align:center;text-align-last:center;
+  transition:border-radius .35s var(--spring)}
+.search_bar select:active{border-radius:12px}
+
+/* Botão de busca: círculo que vira "squircle" ao tocar */
+#search_submit{display:grid!important;place-items:center;order:2;flex:none;width:48px;height:48px;padding:0;margin:0;
+  border:none;outline:none;border-radius:50%;background:var(--primary);color:var(--on-primary);
+  transition:border-radius .35s var(--spring),transform .35s var(--spring)}
+#search_submit:active{border-radius:16px;transform:scale(.9)}
+.search.icon{display:block;border:none;border-radius:0;margin:0;width:26px;height:26px;transform:none;text-align:left;background:currentColor;
+  -webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M15.5 14h-.8l-.3-.3A6.5 6.5 0 1 0 14 15.5l.3.3v.8l5 5 1.5-1.5-5-5zm-6 0a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9z'/></svg>") center/contain no-repeat;
+  mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M15.5 14h-.8l-.3-.3A6.5 6.5 0 1 0 14 15.5l.3.3v.8l5 5 1.5-1.5-5-5zm-6 0a4.5 4.5 0 1 1 0-9 4.5 4.5 0 0 1 0 9z'/></svg>") center/contain no-repeat}
+.search.icon:before,.search.icon:after{display:none!important;content:none}
+
+/* Gatilho nativo do Via (cobre a barra) */
+#search_bar_trigger{position:absolute;inset:0;z-index:1;width:100%;height:100%;padding:0;border:0;border-radius:32px;background:transparent;color:inherit}
+#search_bar_trigger:focus-visible{outline:2px solid var(--primary);outline-offset:3px}
+
+/* Sugestões */
+.opSug_wpr{position:absolute;top:calc(100% + 10px);left:0;right:0;width:100%;max-width:600px;margin:0;z-index:9999;
+  max-height:46vh;overflow-y:scroll;line-height:normal;border:none;border-radius:28px;
+  background:var(--surface-high);box-shadow:0 6px 20px rgba(0,0,0,.25);animation:rise .4s var(--spring) both}
+.opSug_wpr::-webkit-scrollbar{width:0}
+.opSug_wpr table{width:100%;padding:0;border-spacing:0;background:none}
+.opSug_wpr tr{display:table-row;margin:0;padding:0;transition:background .2s}
+.opSug_wpr tr:active,.opSug_wpr tr:hover{background:var(--primary-container);color:var(--on-primary-container)}
+.opSug_wpr td{padding:15px 24px;background:none;color:var(--on-surface);font:500 15px var(--font);text-align:left;text-indent:0;vertical-align:middle}
+.opSug_wpr tr:first-child td{padding-top:20px}.opSug_wpr tr:last-child td{padding-bottom:20px}
+
+/* ---------- Favoritos: formas expressivas ---------- */
+#bookmark_part{display:block;max-width:600px;margin:30px auto 0;padding:0 14px;background:transparent;text-align:center}
+#box_container{width:100%!important;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:center;gap:6px 8px;font-size:0;text-align:center}
+.box{position:relative;display:inline-block;vertical-align:top;width:76px;margin:6px 0;border:0;text-align:center;
+  animation:rise .7s var(--spring) both}
+.box:nth-child(2){animation-delay:.05s}.box:nth-child(3){animation-delay:.1s}.box:nth-child(4){animation-delay:.15s}
+.box:nth-child(5){animation-delay:.2s}.box:nth-child(6){animation-delay:.25s}.box:nth-child(n+7){animation-delay:.3s}
+.box a{position:absolute;left:0;top:0;width:100%;height:100%;z-index:2}
+.box .title,.box .overlay,.box img.smaller{display:block;margin:0 auto;width:64px;height:64px;line-height:64px;
+  -webkit-filter:none;filter:none;backdrop-filter:none;box-shadow:none;object-fit:cover;
+  font:700 22px/64px var(--font);
+  transition:border-radius .45s var(--spring),transform .45s var(--spring)}
+.box .overlay{position:absolute;left:50%;top:0;margin-left:-32px;background:transparent}
+
+/* ciclo de formas: círculo, squircle, arco, blob, folha */
+.box:nth-child(5n+1) :is(.title,.overlay,img.smaller){border-radius:50%}
+.box:nth-child(5n+2) :is(.title,.overlay,img.smaller){border-radius:24px}
+.box:nth-child(5n+3) :is(.title,.overlay,img.smaller){border-radius:32px 32px 14px 14px}
+.box:nth-child(5n+4) :is(.title,.overlay,img.smaller){border-radius:62% 38% 55% 45% / 45% 55% 45% 55%}
+.box:nth-child(5n) :is(.title,.overlay,img.smaller){border-radius:30px 6px 30px 6px}
+/* cores tonais */
+.box:nth-child(5n+1) :is(.title,img.smaller){background:var(--primary-container)!important;color:var(--on-primary-container)!important}
+.box:nth-child(5n+2) :is(.title,img.smaller){background:var(--tertiary-container)!important;color:var(--on-tertiary-container)!important}
+.box:nth-child(5n+3) :is(.title,img.smaller){background:var(--secondary-container)!important;color:var(--on-secondary-container)!important}
+.box:nth-child(5n+4) :is(.title,img.smaller){background:var(--primary)!important;color:var(--on-primary)!important}
+.box:nth-child(5n) :is(.title,img.smaller){background:var(--surface-highest)!important;color:var(--on-surface)!important}
+/* favicons (muitos têm fundo branco): viram um "ícone" menor dentro do bloco tonal */
+.box img,.box img.smaller{box-sizing:border-box!important;width:64px!important;height:64px!important;padding:16px!important;object-fit:contain!important;-webkit-filter:none;filter:none}
+@media (prefers-color-scheme:dark){.box img,.box img.smaller{-webkit-filter:brightness(.85);filter:brightness(.85)}}
+.box:nth-child(5n+1) img{background:var(--primary-container)!important;border-radius:50%}
+.box:nth-child(5n+2) img{background:var(--tertiary-container)!important;border-radius:24px}
+.box:nth-child(5n+3) img{background:var(--secondary-container)!important;border-radius:32px 32px 14px 14px}
+.box:nth-child(5n+4) img{background:var(--primary)!important;border-radius:62% 38% 55% 45% / 45% 55% 45% 55%}
+.box:nth-child(5n) img{background:var(--surface-highest)!important;border-radius:30px 6px 30px 6px}
+/* toque: a forma "morfa" e afunda */
+.box:active :is(.title,img.smaller){border-radius:14px!important;transform:scale(.88)}
+.url{width:76px;height:auto;max-height:28px;margin:6px 0 0;line-height:14px;font-size:11px;font-weight:500;
+  color:var(--on-surface-variant);white-space:normal;word-wrap:break-word;overflow:hidden}
+
+/* ---------- Telas menores / acessibilidade ---------- */
+@media (max-height:640px){#content{top:70px}.headline{font-size:38px}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
