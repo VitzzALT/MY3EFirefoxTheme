@@ -2,7 +2,7 @@
 
 Tema **Material 3 Expressive** para o Firefox: página inicial, nova aba e interface do navegador, com formas que se transformam, movimento com mola e linhas onduladas e em zigzag. A paleta é gerada a partir da **cor de destaque do Windows**, nos modos claro e escuro.
 
-<img width="1919" height="912" alt="image" src="https://github.com/user-attachments/assets/c3759077-07e1-47a3-9142-5f8a413f56a1" />
+<img width="1919" height="912" alt="image" src="https://github.com/user-attachments/assets/61ad8ee4-f0ea-43ee-b6d5-b872043c93d6" />
 
 **Página inicial:** https://vitzzalt.github.io/MY3EFirefoxTheme/
 
@@ -14,7 +14,7 @@ Tema **Material 3 Expressive** para o Firefox: página inicial, nova aba e inter
 | `userChrome.css` | Visual da interface do Firefox (abas, barra de endereço, botões, favoritos, menus) |
 | `install.ps1` / `install.sh` | Instalam o tema automaticamente (Windows / Linux) |
 | `fonts/SymbolsNerdFont-Regular.ttf` | Fonte de ícones da [Nerd Fonts](https://www.nerdfonts.com/) usada nos atalhos |
-| `via/` | Versão para o Via Browser (Android): `homepage.css` e `logo-snippet.html` |
+| `via/` | Versão para o [Via Browser](via/README.md) (Android): `homepage.css` e `logo-snippet.html` |
 
 ## Instalação rápida (script)
 
@@ -95,12 +95,7 @@ Cada bloco do `userChrome.css` tem um comentário numerado. Apague o bloco para 
 
 ## Via Browser (Android)
 
-A pasta `via/` tem uma versão para o Via, com paleta fixa (sem cor dinâmica):
-
-1. Em **Custom CSS** nas configurações do Via, cole o conteúdo de `via/homepage.css`.
-2. No campo do **logo** da homepage, cole o conteúdo de `via/logo-snippet.html`.
-
-O Via refaz a homepage sozinho quando você adiciona favoritos, e só os campos de configuração são mantidos. Por isso o tema fica nesses dois campos, e não no arquivo HTML.
+A pasta [`via/`](via/) tem uma versão para o [Via](https://viayoo.com/), usada junto com o módulo [BetterVia](https://github.com/Xposed-Modules-Repo/com.jiguro.bettervia). A paleta ali é fixa (sem cor dinâmica). Veja o [README da pasta](via/README.md) para instalar.
 
 ## Observações
 
@@ -111,4 +106,5 @@ O Via refaz a homepage sozinho quando você adiciona favoritos, e só os campos 
 ## Créditos
 
 - Design baseado no [Material 3 Expressive](https://m3.material.io/blog/building-with-m3-expressive), do Google.
+- Via: [BetterVia](https://github.com/Xposed-Modules-Repo/com.jiguro.bettervia), módulo de terceiros (software proprietário, não incluído aqui).
 - Ícones: [Nerd Fonts](https://www.nerdfonts.com/) (a fonte tem as suas próprias licenças, veja o repositório do projeto).
