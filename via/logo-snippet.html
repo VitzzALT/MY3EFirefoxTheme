@@ -1,0 +1,37 @@
+<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 17.3l-5.2 3.1 1.4-5.9L3.6 10.6l6-.5L12 4.5l2.4 5.6 6 .5-4.6 3.9 1.4 5.9z"/></svg><b id="greet">Olá</b>
+<script>
+(function(){
+var d=document;
+function init(){
+  var h=new Date().getHours();
+  d.getElementById("greet").textContent=h<5?"Boa madrugada":h<12?"Bom dia":h<18?"Boa tarde":"Boa noite";
+  /* fundo M3E: formas + zigzag */
+  if(!d.getElementById("bg")){var bg=d.createElement("div");bg.id="bg";bg.setAttribute("aria-hidden","true");
+    bg.innerHTML='<i class="s1"></i><i class="s2"></i><i class="s3"></i><i class="zz"></i>';d.body.insertBefore(bg,d.body.firstChild);}
+  /* título + onda (fora do link, pra não abrir favoritos ao tocar) */
+  var logo=d.querySelector(".logo");
+  if(logo&&!d.querySelector(".headline")){var t=d.createElement("h1");t.className="headline";t.innerHTML="Para onde<br>vamos?";
+    var w=d.createElement("i");w.className="wave";w.setAttribute("aria-hidden","true");logo.after(t);t.after(w);}
+  var inp=d.getElementById("search_input");if(inp)inp.placeholder="Pesquisar ou digitar endereço";
+  /* seletor de mecanismo (Brave primeiro = padrão) */
+  var b=d.getElementById("search_submit"),c=d.createElement("select"),e=[],f=window.search,k,
+  g={
+    br:{name:"Brave",url:"https://search.brave.com/search?q="},
+    gg:{name:"Google",url:"https://www.google.com/search?q="},
+    dd:{name:"DuckDuckGo",url:"https://duckduckgo.com/?q="},
+    by:{name:"Bing",url:"https://www.bing.com/search?q="},
+    yt:{name:"YouTube",url:"https://www.youtube.com/results?search_query="},
+    wk:{name:"Wikipédia",url:"https://pt.wikipedia.org/w/index.php?search="},
+    yd:{name:"Yandex",url:"https://yandex.com/search/?text="}
+  };
+  for(k in g)e.push("<option value="+k+">"+g[k].name+"</option>");
+  c.innerHTML=e.join("");
+  c.onchange=function(){localStorage.se=this.value};
+  c.value=g[localStorage.se]?localStorage.se:"br";
+  if(b){b.parentElement.insertBefore(c,b);}
+  window.search=function(){var a=d.getElementById("search_input");a.value=a.value.trim();return a.value?(a.value=g[c.value].url+a.value,f()):!1};
+}
+d.readyState==="loading"?d.addEventListener("DOMContentLoaded",init):init();
+})();
+document.title='云无心以出岫';
+</script>
