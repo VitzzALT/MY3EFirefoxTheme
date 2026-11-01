@@ -110,3 +110,4 @@ A pasta [`via/`](via/) tem uma versão para o [Via](https://viayoo.com/), usada 
 - Design baseado no [Material 3 Expressive](https://m3.material.io/blog/building-with-m3-expressive), do Google.
 - Via: [BetterVia](https://github.com/Xposed-Modules-Repo/com.jiguro.bettervia), módulo de terceiros (software proprietário, não incluído aqui).
 - Ícones: [Nerd Fonts](https://www.nerdfonts.com/) (a fonte tem as suas próprias licenças, veja o repositório do projeto).
+- Desenvolvido com a ajuda do [Claude](https://claude.ai), assistente de IA da [Anthropic](https://www.anthropic.com).
