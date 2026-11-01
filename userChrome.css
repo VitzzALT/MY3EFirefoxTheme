@@ -1,0 +1,143 @@
+/* ===== Material 3 Expressive — userChrome.css (Firefox) v2 =====
+   Cores derivadas da cor de destaque do Windows (AccentColor) com paleta tonal M3.
+   Se algo ficar estranho: apague o bloco correspondente (ou o arquivo) e reinicie o Firefox. */
+
+/* 1) Paleta base (usada se o Firefox não entender a cor do sistema) */
+:root{
+  --m-surface:#FEF7FF;--m-on-surface:#1D1B20;--m-on-variant:#49454F;
+  --m-primary:#6750A4;--m-on-primary:#fff;
+  --m-primary-c:#EADDFF;--m-on-primary-c:#21005D;
+  --m-secondary-c:#E8DEF8;--m-on-secondary-c:#1D192B;
+  --m-tertiary-c:#FFD8E4;--m-on-tertiary-c:#31111D;
+  --m-surface-high:#ECE6F0;--m-surface-highest:#E6E0E9;
+  --m-spring:cubic-bezier(.34,1.56,.64,1);
+}
+@media (prefers-color-scheme:dark){:root{
+  --m-surface:#141218;--m-on-surface:#E6E0E9;--m-on-variant:#CAC4D0;
+  --m-primary:#D0BCFF;--m-on-primary:#381E72;
+  --m-primary-c:#4F378B;--m-on-primary-c:#EADDFF;
+  --m-secondary-c:#4A4458;--m-on-secondary-c:#E8DEF8;
+  --m-tertiary-c:#633B48;--m-on-tertiary-c:#FFD8E4;
+  --m-surface-high:#2B2930;--m-surface-highest:#36343B;
+}}
+
+/* 2) Paleta dinâmica: parte da cor de destaque do Windows */
+@supports (color:oklch(from AccentColor l c h)){
+  :root{
+    --m-surface:oklch(from AccentColor .98 .008 h);
+    --m-on-surface:oklch(from AccentColor .2 .02 h);
+    --m-on-variant:oklch(from AccentColor .42 .025 h);
+    --m-primary:oklch(from AccentColor .46 .16 h);
+    --m-on-primary:#fff;
+    --m-primary-c:oklch(from AccentColor .91 .06 h);
+    --m-on-primary-c:oklch(from AccentColor .25 .09 h);
+    --m-secondary-c:oklch(from AccentColor .92 .03 h);
+    --m-on-secondary-c:oklch(from AccentColor .25 .04 h);
+    --m-tertiary-c:oklch(from AccentColor .91 .06 calc(h + 60));
+    --m-on-tertiary-c:oklch(from AccentColor .25 .08 calc(h + 60));
+    --m-surface-high:oklch(from AccentColor .93 .015 h);
+    --m-surface-highest:oklch(from AccentColor .9 .02 h);
+  }
+  @media (prefers-color-scheme:dark){:root{
+    --m-surface:oklch(from AccentColor .17 .012 h);
+    --m-on-surface:oklch(from AccentColor .92 .01 h);
+    --m-on-variant:oklch(from AccentColor .8 .02 h);
+    --m-primary:oklch(from AccentColor .8 .12 h);
+    --m-on-primary:oklch(from AccentColor .25 .09 h);
+    --m-primary-c:oklch(from AccentColor .36 .1 h);
+    --m-on-primary-c:oklch(from AccentColor .91 .05 h);
+    --m-secondary-c:oklch(from AccentColor .38 .04 h);
+    --m-on-secondary-c:oklch(from AccentColor .91 .03 h);
+    --m-tertiary-c:oklch(from AccentColor .38 .08 calc(h + 60));
+    --m-on-tertiary-c:oklch(from AccentColor .91 .05 calc(h + 60));
+    --m-surface-high:oklch(from AccentColor .24 .018 h);
+    --m-surface-highest:oklch(from AccentColor .29 .02 h);
+  }}
+}
+
+/* 3) Cores e raios globais da interface */
+:root{
+  --toolbar-bgcolor:var(--m-surface)!important;
+  --toolbar-color:var(--m-on-surface)!important;
+  --toolbar-field-background-color:var(--m-surface-high)!important;
+  --toolbar-field-color:var(--m-on-surface)!important;
+  --toolbar-field-focus-background-color:var(--m-surface-highest)!important;
+  --toolbar-field-focus-border-color:var(--m-primary)!important;
+  --toolbarbutton-hover-background:var(--m-primary-c)!important;
+  --toolbarbutton-active-background:var(--m-primary-c)!important;
+  --toolbarbutton-border-radius:50%!important;
+  --tab-border-radius:16px!important;
+  --arrowpanel-background:var(--m-surface-high)!important;
+  --arrowpanel-color:var(--m-on-surface)!important;
+  --arrowpanel-border-radius:28px!important;
+  --arrowpanel-menuitem-border-radius:16px!important;
+  --panel-border-radius:24px!important;
+}
+#navigator-toolbox{background:var(--m-surface)!important;border-bottom:none!important}
+#TabsToolbar,#nav-bar,#PersonalToolbar{background:transparent!important;box-shadow:none!important}
+#sidebar-main,#sidebar-box{background:var(--m-surface-high)!important}
+
+/* 4) Abas: pílulas que mudam de forma, favicon arredondado */
+.tab-background{border-radius:16px!important;margin-block:3px!important;
+  transition:border-radius .35s var(--m-spring),background-color .2s!important}
+.tabbrowser-tab:hover .tab-background:not([selected]){background:var(--m-secondary-c)!important;border-radius:22px!important}
+.tabbrowser-tab:active .tab-background{border-radius:10px!important}
+.tab-background[selected]{background:var(--m-primary-c)!important;box-shadow:none!important;outline:none!important}
+.tabbrowser-tab[selected] .tab-label{color:var(--m-on-primary-c)!important;font-weight:600}
+.tab-label{color:var(--m-on-variant)}
+.tab-icon-image{border-radius:7px!important}
+.tab-close-button{border-radius:50%!important}
+
+/* Onda animada na aba selecionada (se bugar, apague este bloco) */
+.tab-background[selected]{position:relative;overflow:hidden}
+.tab-background[selected]::after{content:"";position:absolute;left:14px;right:14px;bottom:2px;height:5px;
+  background:var(--m-primary);opacity:.7;
+  mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='5' viewBox='0 0 16 5'><path d='M0 2.5 Q4 -.5 8 2.5 T16 2.5' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round'/></svg>") repeat-x 0 0/16px 5px;
+  animation:m-wave 1.2s linear infinite}
+@keyframes m-wave{to{mask-position:16px 0}}
+
+/* 5) Barra de endereço: pílula grande */
+#urlbar{--urlbar-height:44px!important}
+#urlbar-background{border-radius:24px!important;border:none!important;background:var(--m-surface-high)!important;
+  box-shadow:0 1px 3px rgba(0,0,0,.18)!important;transition:box-shadow .3s,background .3s,border-radius .4s var(--m-spring)}
+#urlbar[focused]>#urlbar-background,#urlbar[open]>#urlbar-background{
+  background:var(--m-surface-highest)!important;box-shadow:0 0 0 2.5px var(--m-primary)!important}
+#urlbar[open]>#urlbar-background{border-radius:24px 24px 0 0!important}
+#urlbar-input{font-weight:500!important}
+.urlbarView{border-radius:0 0 24px 24px}
+.urlbarView-row[selected]{background:var(--m-primary-c)!important;color:var(--m-on-primary-c)!important;border-radius:16px!important}
+.urlbar-icon,#identity-box,#star-button-box{border-radius:50%!important}
+
+/* Esconde o endereço quando a aba ativa é a página inicial ("Início") */
+:root:has(.tabbrowser-tab[selected][label="Início"]) #urlbar:not([focused]) #urlbar-input,
+:root:has(.tabbrowser-tab[selected][label="Início"]) #urlbar:not([focused]) #identity-box{opacity:0!important}
+
+/* 6) Botões da barra: ícones dentro de círculos tonais, viram squircle ao tocar */
+#nav-bar toolbarbutton.toolbarbutton-1>.toolbarbutton-icon,
+#nav-bar .toolbarbutton-1 .toolbarbutton-icon{
+  border-radius:50%!important;
+  background:var(--m-secondary-c)!important;
+  transition:border-radius .35s var(--m-spring),background .2s!important}
+#nav-bar toolbarbutton.toolbarbutton-1:hover>.toolbarbutton-icon{background:var(--m-primary-c)!important;border-radius:14px!important}
+#nav-bar toolbarbutton.toolbarbutton-1:active>.toolbarbutton-icon{border-radius:8px!important}
+
+/* 7) Barra de favoritos: cada item numa forma expressiva diferente */
+#PersonalToolbar toolbarbutton.bookmark-item{padding:4px 12px!important;margin:3px 3px!important;
+  background:var(--m-secondary-c)!important;color:var(--m-on-secondary-c)!important;
+  transition:border-radius .4s var(--m-spring)!important}
+#PersonalToolbar toolbarbutton.bookmark-item:nth-child(5n+1){border-radius:50px!important}
+#PersonalToolbar toolbarbutton.bookmark-item:nth-child(5n+2){border-radius:12px!important;background:var(--m-tertiary-c)!important;color:var(--m-on-tertiary-c)!important}
+#PersonalToolbar toolbarbutton.bookmark-item:nth-child(5n+3){border-radius:18px 18px 6px 6px!important;background:var(--m-primary-c)!important;color:var(--m-on-primary-c)!important}
+#PersonalToolbar toolbarbutton.bookmark-item:nth-child(5n+4){border-radius:60% 40% 55% 45% / 50% 50% 50% 50%!important}
+#PersonalToolbar toolbarbutton.bookmark-item:nth-child(5n){border-radius:16px 4px 16px 4px!important;background:var(--m-surface-highest)!important;color:var(--m-on-surface)!important}
+#PersonalToolbar toolbarbutton.bookmark-item:hover{border-radius:50px!important}
+#PersonalToolbar toolbarbutton.bookmark-item:active{border-radius:6px!important}
+#PersonalToolbar .toolbarbutton-icon{border-radius:6px!important}
+
+/* 8) Menus */
+menupopup{--panel-border-radius:20px!important;--panel-padding:6px!important}
+menuitem,menu{border-radius:12px!important}
+
+/* 9) Zigzag entre a barra e a página (apague este bloco se não gostar) */
+#navigator-toolbox::after{content:"";display:block;height:8px;background:var(--m-primary);opacity:.55;
+  mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='8' viewBox='0 0 16 8'><path d='M0 6 L4 2 L8 6 L12 2 L16 6' fill='none' stroke='black' stroke-width='1.8' stroke-linejoin='round' stroke-linecap='round'/></svg>") repeat-x 0 0/16px 8px}
