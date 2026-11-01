@@ -2,7 +2,7 @@
 
 Tema **Material 3 Expressive** para o Firefox: página inicial, nova aba e interface do navegador, com formas que se transformam, movimento com mola e linhas onduladas e em zigzag. A paleta é gerada a partir da **cor de destaque do Windows**, nos modos claro e escuro.
 
-<!-- Coloque aqui um print: ![Prévia](preview.png) -->
+<img width="1919" height="912" alt="image" src="https://github.com/user-attachments/assets/27fb5ac0-b230-489b-adc0-56ccd2f472b2" />
 
 **Página inicial:** https://vitzzalt.github.io/MY3EFirefoxTheme/
 
@@ -12,7 +12,7 @@ Tema **Material 3 Expressive** para o Firefox: página inicial, nova aba e inter
 | --- | --- |
 | `index.html` | Página inicial e de nova aba (busca, atalhos, saudação por horário) |
 | `userChrome.css` | Visual da interface do Firefox (abas, barra de endereço, botões, favoritos, menus) |
-| `SymbolsNerdFont-Regular.ttf` | Fonte de ícones da [Nerd Fonts](https://www.nerdfonts.com/) usada nos atalhos |
+| `fonts/SymbolsNerdFont-Regular.ttf` | Fonte de ícones da [Nerd Fonts](https://www.nerdfonts.com/) usada nos atalhos |
 | `via/` | Versão para o Via Browser (Android): `homepage.css` e `logo-snippet.html` |
 
 ## Instalação no Firefox
