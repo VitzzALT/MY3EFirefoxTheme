@@ -4,6 +4,8 @@ Tema **Material 3 Expressive** para o Firefox: página inicial, nova aba e inter
 
 <img width="1919" height="912" alt="image" src="https://github.com/user-attachments/assets/61ad8ee4-f0ea-43ee-b6d5-b872043c93d6" />
 
+<img width="1919" height="1029" alt="image" src="https://github.com/user-attachments/assets/fd193f34-b176-4ea8-89da-9f74ead7c648" />
+
 **Página inicial:** https://vitzzalt.github.io/MY3EFirefoxTheme/
 
 ## O que tem aqui
