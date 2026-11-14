@@ -141,3 +141,57 @@ menuitem,menu{border-radius:12px!important}
 /* 9) Zigzag entre a barra e a página (apague este bloco se não gostar) */
 #navigator-toolbox::after{content:"";display:block;height:8px;background:var(--m-primary);opacity:.55;
   mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='8' viewBox='0 0 16 8'><path d='M0 6 L4 2 L8 6 L12 2 L16 6' fill='none' stroke='black' stroke-width='1.8' stroke-linejoin='round' stroke-linecap='round'/></svg>") repeat-x 0 0/16px 8px}
+
+/* 10 Trilho lateral vira um "cartão" tonal flutuante */
+#browser{background:var(--m-surface)!important}
+#sidebar-main{
+  background:var(--m-surface-high)!important;
+  border-radius:28px!important;
+  margin:6px 0 8px 8px!important;
+  box-shadow:0 1px 3px rgba(0,0,0,.18)!important;
+  /* o sidebar-main usa shadow DOM: só variáveis passam pra dentro dele */
+  --tab-selected-bgcolor:var(--m-primary-c);
+  --tab-selected-textcolor:var(--m-on-primary-c);
+  --toolbarbutton-hover-background:var(--m-secondary-c);
+  --toolbar-color:var(--m-on-surface);
+  --button-background-color-hover:var(--m-secondary-c);
+}
+
+/* 10.1 Página como cartão arredondado ao lado do trilho */
+#tabbrowser-tabpanels{background:var(--m-surface)!important}
+#tabbrowser-tabpanels .browserContainer{padding:0 8px 8px 8px!important}
+.browserStack>browser{border-radius:20px!important}
+
+/* 10.2 Abas verticais: pílulas largas que mudam de forma */
+#tabbrowser-tabs[orient="vertical"] .tab-background{
+  border-radius:20px!important;margin-inline:4px!important;margin-block:2px!important}
+#tabbrowser-tabs[orient="vertical"] .tabbrowser-tab:hover .tab-background:not([selected]){
+  border-radius:28px!important}
+#tabbrowser-tabs[orient="vertical"] .tabbrowser-tab:active .tab-background{
+  border-radius:10px!important}
+
+/* Fixadas: quadrados arredondados que viram círculo no hover */
+#tabbrowser-tabs[orient="vertical"] .tabbrowser-tab[pinned] .tab-background{border-radius:16px!important}
+#tabbrowser-tabs[orient="vertical"] .tabbrowser-tab[pinned]:hover .tab-background{border-radius:50%!important}
+
+/* 10.3 Onda vertical na borda esquerda da aba selecionada (substitui a horizontal) */
+#tabbrowser-tabs[orient="vertical"] .tab-background[selected]::after{
+  left:5px;right:auto;top:14px;bottom:14px;width:5px;height:auto;
+  mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='5' height='16' viewBox='0 0 5 16'><path d='M2.5 0 Q-.5 4 2.5 8 T2.5 16' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round'/></svg>") repeat-y 0 0/5px 16px;
+  animation:m-wave-v 1.2s linear infinite}
+@keyframes m-wave-v{to{mask-position:0 16px}}
+
+/* 10.4 Ícone "pula" com mola ao selecionar a aba */
+.tabbrowser-tab[selected] .tab-icon-image{animation:m-pop .45s var(--m-spring)}
+@keyframes m-pop{from{transform:scale(.6)}to{transform:scale(1)}}
+
+/* 10.5 Botão de nova aba como FAB (tertiary) */
+#vertical-tabs-newtab-button{
+  background:var(--m-tertiary-c)!important;color:var(--m-on-tertiary-c)!important;
+  border-radius:16px!important;margin:6px 8px!important;
+  transition:border-radius .35s var(--m-spring)!important}
+#vertical-tabs-newtab-button:hover{border-radius:26px!important}
+#vertical-tabs-newtab-button:active{border-radius:8px!important}
+
+/* 10.6 Scroll fino e discreto */
+#tabbrowser-arrowscrollbox{scrollbar-width:thin;scrollbar-color:var(--m-primary-c) transparent}
