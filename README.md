@@ -38,7 +38,6 @@ Tema **Material 3 Expressive** para o Firefox: página inicial, nova aba e inter
 | `userChrome.css` | Visual da interface do Firefox (abas, barra de endereço, botões, favoritos, menus) |
 | `install.ps1` / `install.sh` | Instalam o tema automaticamente (Windows / Linux) |
 | `fonts/SymbolsNerdFontMono-Regular.ttf` | Fonte de ícones da [Nerd Fonts](https://www.nerdfonts.com/) usada nos atalhos |
-| `via/` | Versão para o [Via Browser](via/README.md) (Android): `homepage.css` e `logo-snippet.html` |
 
 ## Instalação rápida (script)
 
@@ -132,6 +131,5 @@ Quer esse visual no Via Browser? Veja o [MY3E Via Theme](https://github.com/Vitz
 ## Créditos
 
 - Design baseado no [Material 3 Expressive](https://m3.material.io/blog/building-with-m3-expressive), do Google.
-- Via: [BetterVia](https://github.com/Xposed-Modules-Repo/com.jiguro.bettervia), módulo de terceiros (software proprietário, não incluído aqui).
 - Ícones: [Nerd Fonts](https://www.nerdfonts.com/) (a fonte tem as suas próprias licenças, veja o repositório do projeto).
 - Desenvolvido com a ajuda do [Claude](https://claude.ai), assistente de IA da [Anthropic](https://www.anthropic.com).
