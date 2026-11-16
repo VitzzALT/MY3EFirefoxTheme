@@ -2,15 +2,25 @@
 
 Tema **Material 3 Expressive** para o Firefox: página inicial, nova aba e interface do navegador, com formas que se transformam, movimento com mola e linhas onduladas e em zigzag. A paleta é gerada a partir da **cor de destaque do Windows**, nos modos claro e escuro.
 
-> [!IMPORTANT]
+>> [!IMPORTANT]
 > **As animações do sistema precisam estar ativadas.**
 > A página inicial respeita a configuração de "reduzir movimento": com as animações desligadas, tudo fica parado, as formas aparecem como quadrados e as ondas e o zigzag não se movem.
 >
+> **1. Pelas Configurações do Windows**
 > - **Windows 11:** Configurações → Acessibilidade → Efeitos visuais → ligue **Efeitos de animação**
 > - **Windows 10:** Configurações → Facilidade de Acesso → Vídeo → ligue **Mostrar animações no Windows**
-> - **Ainda parado?** No Firefox, abra `about:config` e, se existir `ui.prefersReducedMotion` com valor `1`, mude para `0`
-> - Se a página inicial aparecer parada ou só com quadrados, é porque as animações do sistema estão desligadas. Veja o aviso no topo.
+>
+> **2. Pelas opções de desempenho (Windows 10 e 11)**
+> Se o passo 1 já estava ligado e continua parado, o Windows pode ter as animações desligadas no modo de desempenho:
+> 1. Aperte `Windows + R`, digite `sysdm.cpl` e dê Enter
+> 2. Aba **Avançado** → em **Desempenho**, clique em **Configurações**
+> 3. Marque **Animar controles e elementos dentro de janelas** (ou escolha **Ajustar para obter a melhor aparência**) e clique em **OK**
+>
+> **3. Pelo Firefox**
+> Abra `about:config` e, se existir `ui.prefersReducedMotion` com valor `1`, mude para `0`.
+>
 > Depois, recarregue a página com `Ctrl + Shift + R`.
+- Se a página inicial aparecer parada ou só com quadrados, é porque as animações do sistema estão desligadas. Veja o aviso no topo.
 
 <img width="1919" height="912" alt="image" src="https://github.com/user-attachments/assets/61ad8ee4-f0ea-43ee-b6d5-b872043c93d6" />
 
