@@ -119,9 +119,9 @@ Os ícones usam códigos da fonte Nerd Fonts, no formato `\uXXXX`. Procure o có
 
 Cada bloco do `userChrome.css` tem um comentário numerado. Apague o bloco para desligar aquela parte (por exemplo, a onda na aba selecionada ou o zigzag sob a barra).
 
-## Via Browser (Android)
+## Versão para Android
 
-A pasta [`via/`](via/) tem uma versão para o [Via](https://viayoo.com/), usada junto com o módulo [BetterVia](https://github.com/Xposed-Modules-Repo/com.jiguro.bettervia). A paleta ali é fixa (sem cor dinâmica). Veja o [README da pasta](via/README.md) para instalar.
+Quer esse visual no Via Browser? Veja o [MY3E Via Theme](https://github.com/VitzzALT/MY3EViaTheme).
 
 ## Observações
 
