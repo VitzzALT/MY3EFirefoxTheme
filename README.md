@@ -20,7 +20,6 @@ Tema **Material 3 Expressive** para o Firefox: página inicial, nova aba e inter
 > Abra `about:config` e, se existir `ui.prefersReducedMotion` com valor `1`, mude para `0`.
 >
 > Depois, recarregue a página com `Ctrl + Shift + R`.
-- Se a página inicial aparecer parada ou só com quadrados, é porque as animações do sistema estão desligadas. Veja o aviso no topo.
 
 <img width="1919" height="912" alt="image" src="https://github.com/user-attachments/assets/61ad8ee4-f0ea-43ee-b6d5-b872043c93d6" />
 
@@ -125,6 +124,7 @@ Quer esse visual no Via Browser? Veja o [MY3E Via Theme](https://github.com/Vitz
 - A interface do Firefox muda entre versões, então alguns seletores do `userChrome.css` podem precisar de ajuste.
 - O endereço da página inicial é escondido na barra enquanto a aba ativa se chamar "Início" (e você não estiver digitando). Isso é feito pelo CSS, não pela extensão.
 - Para desfazer tudo, apague o `userChrome.css` e reinicie o Firefox.
+- Se a página inicial aparecer parada ou só com quadrados, é porque as animações do sistema estão desligadas. Veja o aviso no topo.
 
 ## Créditos
 
