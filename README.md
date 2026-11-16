@@ -2,7 +2,7 @@
 
 Tema **Material 3 Expressive** para o Firefox: página inicial, nova aba e interface do navegador, com formas que se transformam, movimento com mola e linhas onduladas e em zigzag. A paleta é gerada a partir da **cor de destaque do Windows**, nos modos claro e escuro.
 
->> [!IMPORTANT]
+> [!IMPORTANT]
 > **As animações do sistema precisam estar ativadas.**
 > A página inicial respeita a configuração de "reduzir movimento": com as animações desligadas, tudo fica parado, as formas aparecem como quadrados e as ondas e o zigzag não se movem.
 >
