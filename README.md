@@ -20,7 +20,8 @@ Tema **Material 3 Expressive** para o Firefox: página inicial, nova aba e inter
 > Abra `about:config` e, se existir `ui.prefersReducedMotion` com valor `1`, mude para `0`.
 >
 > Depois, recarregue a página com `Ctrl + Shift + R`.
-> - Se a página inicial aparecer parada ou só com quadrados, é porque as animações do sistema estão desligadas. Veja o aviso no topo.
+
+- Se a página inicial aparecer parada ou só com quadrados, é porque as animações do sistema estão desligadas. Veja o aviso no topo.
 
 <img width="1919" height="912" alt="image" src="https://github.com/user-attachments/assets/61ad8ee4-f0ea-43ee-b6d5-b872043c93d6" />
 
