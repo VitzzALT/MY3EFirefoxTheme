@@ -20,7 +20,6 @@ Tema **Material 3 Expressive** para o Firefox: página inicial, nova aba e inter
 > Abra `about:config` e, se existir `ui.prefersReducedMotion` com valor `1`, mude para `0`.
 >
 > Depois, recarregue a página com `Ctrl + Shift + R`.
-
 - Se a página inicial aparecer parada ou só com quadrados, é porque as animações do sistema estão desligadas. Veja o aviso no topo.
 
 <img width="1919" height="912" alt="image" src="https://github.com/user-attachments/assets/61ad8ee4-f0ea-43ee-b6d5-b872043c93d6" />
@@ -86,13 +85,12 @@ O aviso da extensão diz que arquivos locais (`file://`) não funcionam como URL
 
 No Windows, confira se o arquivo não ficou como `userChrome.css.txt`.
 
-4. Troque o endereço nos scripts: no `install.ps1`, edite as variáveis `$Raw` e `$Page`, e no `install.sh`, `RAW` e `PAGE`, colocando o seu usuário e o nome do repositório. Sem isso, eles baixam o tema do repositório original.
-
 ## Fazer a sua própria cópia
 
 1. Faça um fork deste repositório (ou crie um novo e envie os arquivos).
 2. Em **Settings → Pages**, escolha **Deploy from a branch**, branch `main` e pasta `/ (root)`.
 3. Use o endereço que o GitHub mostrar (`https://SEU-USUARIO.github.io/NOME-DO-REPO/`) na página inicial e na extensão.
+4. Troque o endereço nos scripts: no `install.ps1`, edite as variáveis `$Raw` e `$Page`, e no `install.sh`, `RAW` e `PAGE`, colocando o seu usuário e o nome do repositório. Sem isso, eles baixam o tema do repositório original.
 
 O conteúdo fica público, então não coloque nada pessoal nos atalhos.
 
